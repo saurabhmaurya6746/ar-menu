@@ -8,7 +8,7 @@ const dishes = [
     title: 'Classic Cheeseburger',
     price: 199,
     desc: 'Juicy beef patty, melted cheese, fresh lettuce & tomato on a toasted bun.',
-    glb: 'assets/burger_tripo-v2.glb',
+    glb: 'assets/burger_tripo.glb',
     category: 'Burgers',
     rating: 4.6
   },
@@ -48,7 +48,7 @@ const dishes = [
     title: 'Crispy Fries',
     price: 129,
     desc: 'Golden, crispy fries with house seasoning.',
-    glb: 'assets/french_fries (1).glb',
+    glb: 'assets/french_fries.glb',
     category: 'Sides',
     rating: 4.3
   },
@@ -204,7 +204,6 @@ if (clearCartBtn) {
   });
 }
 
-
 checkoutBtn.addEventListener('click', () => {
   if (cart.length === 0) {
     return alert('Cart is empty.');
@@ -216,23 +215,26 @@ checkoutBtn.addEventListener('click', () => {
   const tableNumber = prompt("Enter your table number:");
   if (!tableNumber) return alert("Table number is required!");
 
+  // ⚠️ WhatsApp open hone ka alert
+  alert("Please press the continue button to send your order ✅");
+
   let orderDetails = "";
   let total = 0;
 
-cart.forEach(item => {
-  const dish = dishes.find(d => d.id === item.id);
-  if (dish) {
-    const quantity = item.qty || 1; // FIXED: qty ka use
-    const price = Number(dish.price);
-    const itemTotal = price * quantity;
+  cart.forEach(item => {
+    const dish = dishes.find(d => d.id === item.id);
+    if (dish) {
+      const quantity = item.qty;
+      const price = Number(dish.price);
+      const itemTotal = price * quantity;
 
-    orderDetails += `• ${dish.title} (x${quantity}) — ₹${itemTotal}\n`;
-    total += itemTotal;
-  }
-});
+      // Breakdown: 1×price
+      orderDetails += `• ${dish.title} (x${quantity}) — 1×₹${price} = ₹${itemTotal}\n`;
+      total += itemTotal;
+    }
+  });
 
-
-  const phoneNumber = "919369739349"; // apna WhatsApp number
+  const phoneNumber = "919555702945"; // apna WhatsApp number
   const message =
 `🧾 *New Order Received*
 👤 Name: ${name}
@@ -243,7 +245,6 @@ ${orderDetails}
 
 Please confirm the order ✅`;
 
-  // Mobile pe direct app open kare, desktop pe web
   const mobileURL = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
   const webURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -253,8 +254,9 @@ Please confirm the order ✅`;
     window.open(webURL, "_blank");
   }
 
-  // Optional: clear cart
+  // Order ke baad cart empty
   cart.length = 0;
+  saveCart();
   renderCart();
 });
 
@@ -333,11 +335,15 @@ function stars(r){
 /***********************
  * 3D Modal
  ***********************/
-function open3DModal(dish){
+function open3DModal(dish) {
   currentDish = dish;
   mv.pause();
   mv.src = dish.glb;
   mv.alt = dish.title;
+
+  // 🔹 Camera ko reset front view pe
+  mv.setAttribute('camera-orbit', '0deg 75deg 105%');
+  mv.jumpCameraToGoal();
 
   mTitle.textContent = dish.title;
   mDesc.textContent  = dish.desc;
@@ -346,14 +352,15 @@ function open3DModal(dish){
 
   rotating = true;
   rotateBtn.textContent = 'Stop';
-  mv.setAttribute('auto-rotate','');
+  mv.setAttribute('auto-rotate', '');
   applyLightingPreset('neutral');
 
   modal.classList.remove('hidden');
-  modal.setAttribute('aria-hidden','false');
+  modal.setAttribute('aria-hidden', 'false');
 
-  requestAnimationFrame(()=> mv.play());
+  requestAnimationFrame(() => mv.play());
 }
+
 
 function close3DModal(){
   modal.classList.add('hidden');
@@ -454,16 +461,17 @@ function closeCartModal() {
     document.activeElement.blur();
   }
 
-  // 2. Modal hide karo
-  cartModal.classList.add('hidden');
-  cartModal.setAttribute('aria-hidden', 'true');
-
-  // 3. Focus ko safe element pe le jao (header ka Cart button)
+  // 2. Focus ko safe element pe le jao (modal ke bahar)
   const cartBtn = document.getElementById('cartBtn');
   if (cartBtn) {
     cartBtn.focus();
   }
+
+  // 3. Modal hide karo
+  cartModal.classList.add('hidden');
+  cartModal.setAttribute('aria-hidden', 'true');
 }
+
 
 function renderCart() {
   cartItemsEl.innerHTML = '';
