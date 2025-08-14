@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Restaurant — AR Menu</title>
+
+  <!-- model-viewer (WebXR / Scene Viewer) -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-wrap">
+      <div class="brand">
+        <span class="logo">🍽️</span>
+        <div>
+          <h1>My Restaurant — AR Menu</h1>
+          <p class="subtitle">Tap any dish preview to open full 3D / AR viewer.</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-wrap">
+          <input id="searchInput" type="text" placeholder="Search dishes…" />
+        </div>
+        <select id="categoryFilter" class="select">
+          <option value="all">All categories</option>
+        </select>
+
+        <button id="darkToggle" class="icon-btn" title="Toggle dark mode">🌙</button>
+
+        <button id="cartBtn" class="cart-btn" aria-label="Open cart">
+          🛒 <span id="cartCount" class="badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="list-card">
+      <div class="list-head">
+        <div>Dish</div>
+        <div class="right">Preview</div>
+      </div>
+
+      <div id="dishList" class="list-body"></div>
+    </div>
+  </main>
+
+  <!-- 3D / AR Modal -->
+  <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-sheet" role="document">
+      <button class="icon-btn close" id="closeModal" aria-label="Close">✕</button>
+
+      <div class="mv-wrap">
+        <model-viewer
+          id="mv"
+          ar
+          ar-modes="webxr scene-viewer"
+          camera-controls
+          auto-rotate
+          environment-image="neutral"
+          exposure="1"
+          shadow-intensity="1"
+          style="width:100%;height:58vh;background:var(--surface-2);border-radius:14px;"
+        ></model-viewer>
+      </div>
+
+      <div class="modal-controls">
+        <div class="left">
+          <button id="rotateBtn" class="btn outline">Stop</button>
+          <button id="resetViewBtn" class="btn outline">Reset view</button>
+        </div>
+        <div class="right">
+          <div class="light-group">
+            <span class="muted">Lighting:</span>
+            <button class="chip" data-light="neutral">Neutral</button>
+            <button class="chip" data-light="bright">Bright</button>
+            <button class="chip" data-light="warm">Warm</button>
+          </div>
+          <button id="arBtn" class="btn">Place on table (AR)</button>
+        </div>
+      </div>
+
+      <div class="modal-info">
+        <div class="meta">
+          <h2 id="mTitle">Dish title</h2>
+          <p id="mDesc" class="muted">Description…</p>
+          <div id="mRating" class="rating"></div>
+        </div>
+        <div class="meta-right">
+          <div id="mPrice" class="price">₹0</div>
+          <div class="btn-row">
+            <button id="addBtn" class="btn success">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div id="cartModal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-sheet" role="document">
+      <button class="icon-btn close" id="closeCart" aria-label="Close cart">✕</button>
+      <h2>🛒 Your Cart</h2>
+
+      <div id="cartEmpty" class="muted" style="margin:8px 0 14px;">Your cart is empty.</div>
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="cart-summary">
+        <div class="muted">Subtotal</div>
+        <div id="cartSubtotal" class="price">₹0</div>
+      </div>
+      <div class="cart-actions">
+        <button id="clearCart" class="btn outline">Clear</button>
+        <button id="checkoutBtn" class="btn success">Order Placed</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
