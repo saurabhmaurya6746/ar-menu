@@ -112,7 +112,7 @@ h1 {
   outline: none;
 }
 .icon-btn {
-  background: #fff2;
+  background: rgba(99, 87, 87, 0.133);
   border: 1px solid #ffffff55;
   border-radius: 10px;
   width: 38px;
@@ -247,6 +247,35 @@ h1 {
   height: 100%;
   background: transparent;
 }
+/* Modal sheet scroll fix */
+.modal-sheet {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh; /* full screen height */
+  overflow-y: auto;
+}
+
+/* Ensure model-viewer section does not shrink */
+.mv-wrap {
+  flex-shrink: 0;
+}
+
+/* Info section padding */
+.modal-info {
+  padding-bottom: 10px; /* space so button doesn't hide under bottom edge */
+}
+
+/* Button row fix for mobile */
+@media (max-width: 768px) {
+  .btn-row {
+    position: sticky;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+  }
+}
 
 /* Buttons */
 .btn {
@@ -370,7 +399,7 @@ h1 {
   justify-content: flex-end;
   margin-top: 8px;
   flex-wrap: wrap;
-      margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 /* Cart modal layout */
