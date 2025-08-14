@@ -48,6 +48,27 @@
       <div id="dishList" class="list-body"></div>
     </div>
   </main>
+<!-- Guidelines Modal -->
+<div id="guidelinesModal" class="modal" aria-hidden="false">
+  <div class="modal-backdrop"></div>
+  <div class="modal-sheet" role="document">
+    <button class="icon-btn close" id="closeGuidelines" aria-label="Close">✕</button>
+    <h2>📜 How to Order / कैसे ऑर्डर करें</h2>
+    <ul>
+      <li>Search or browse dishes from the menu.  
+          <br><small>मेन्यू से डिश सर्च करें या ब्राउज़ करें।</small></li>
+      <li>Tap a dish preview to open the 3D/AR viewer.  
+          <br><small>डिश के प्रीव्यू पर टैप करें और 3D/AR व्यू खोलें।</small></li>
+      <li>Rotate, zoom, or place it on your table using AR.  
+          <br><small>AR का इस्तेमाल कर डिश को घुमाएं, ज़ूम करें या टेबल पर रखें।</small></li>
+      <li>Click "Add to cart" to save it.  
+          <br><small>“Add to cart” पर क्लिक कर डिश को सेव करें।</small></li>
+      <li>When ready, open the cart and place your order.  
+          <br><small>जब तैयार हों, कार्ट खोलकर ऑर्डर प्लेस करें।</small></li>
+    </ul>
+    <button id="gotItBtn" class="btn success">Got it! / समझ गया</button>
+  </div>
+</div>
 
   <!-- 3D / AR Modal -->
   <div id="modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true">
