@@ -8,7 +8,7 @@ const dishes = [
     title: 'Classic Cheeseburger',
     price: 199,
     desc: 'Juicy beef patty, melted cheese, fresh lettuce & tomato on a toasted bun.',
-    glb: 'assets/burger_tripo.glb',
+    glb: 'assets/burger_tripo-v2.glb',
     category: 'Burgers',
     rating: 4.6
   },
@@ -48,7 +48,7 @@ const dishes = [
     title: 'Crispy Fries',
     price: 129,
     desc: 'Golden, crispy fries with house seasoning.',
-    glb: 'assets/french_fries.glb',
+    glb: 'assets/french_fries (1).glb',
     category: 'Sides',
     rating: 4.3
   },
