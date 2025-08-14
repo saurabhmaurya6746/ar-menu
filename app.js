@@ -205,7 +205,7 @@ cart.forEach(item => {
 });
 
 
-  const phoneNumber = "919369739349"; // apna WhatsApp number
+  const phoneNumber = "919555702945"; // apna WhatsApp number
   const message =
 `🧾 *New Order Received*
 👤 Name: ${name}
