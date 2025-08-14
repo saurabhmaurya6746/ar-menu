@@ -8,20 +8,20 @@ const dishes = [
     title: 'Classic Cheeseburger',
     price: 199,
     desc: 'Juicy beef patty, melted cheese, fresh lettuce & tomato on a toasted bun.',
-    glb: 'assets/burger_tripo-v2.glb',
+    glb: 'assets/burger_tripo.glb',
     category: 'Burgers',
     rating: 4.6
   },
   {
-    id: 'chowmein',
-    emoji: '🍜',
-    title: 'Veg Chowmein',
-    price: 149,
-    desc: 'Stir-fried noodles with fresh vegetables and special sauce.',
-    glb: 'assets/Noodles.glb',
-    category: 'Noodles',
-    rating: 4.2
-  },
+  id: 'pasta',
+  emoji: '🍝',
+  title: 'Creamy Alfredo Pasta',
+  price: 249,
+  desc: 'Rich and creamy Alfredo sauce tossed with perfectly cooked pasta, garnished with parmesan & fresh herbs.',
+  glb: 'assets/pasta.glb',
+  category: 'Pasta',
+  rating: 4.7
+},
   {
     id: 'pizza',
     emoji: '🍕',
@@ -48,11 +48,38 @@ const dishes = [
     title: 'Crispy Fries',
     price: 129,
     desc: 'Golden, crispy fries with house seasoning.',
-    glb: 'assets/french_fries (1).glb',
+    glb: 'assets/french_fries.glb',
     category: 'Sides',
     rating: 4.3
-  } 
+  },
+  {
+    id: 'chowmein',
+    emoji: '🍜',
+    title: 'Veg Chowmein',
+    price: 149,
+    desc: 'Stir-fried noodles with fresh vegetables and special sauce.',
+    glb: 'assets/chaumin.glb',
+    category: 'Noodles',
+    rating: 4.2
+  }
 ];
+// guidelines pop 
+document.addEventListener("DOMContentLoaded", () => {
+  const guidelinesModal = document.getElementById("guidelinesModal");
+  const closeGuidelines = document.getElementById("closeGuidelines");
+  const gotItBtn = document.getElementById("gotItBtn");
+
+  // Show modal on page load
+  guidelinesModal.classList.remove("hidden");
+
+  // Close functions
+  function closeModal() {
+    guidelinesModal.classList.add("hidden");
+  }
+
+  closeGuidelines.addEventListener("click", closeModal);
+  gotItBtn.addEventListener("click", closeModal);
+});
 
 /***********************
  * Elements
@@ -205,7 +232,7 @@ cart.forEach(item => {
 });
 
 
-  const phoneNumber = "919555702945"; // apna WhatsApp number
+  const phoneNumber = "919369739349"; // apna WhatsApp number
   const message =
 `🧾 *New Order Received*
 👤 Name: ${name}
