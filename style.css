@@ -127,7 +127,7 @@ h1 {
   outline: none;
 }
 .icon-btn {
-  background: rgba(99, 87, 87, 0.133);
+  background: var(--accent);
   border: 1px solid #ffffff55;
   border-radius: 10px;
   width: 38px;
@@ -139,6 +139,7 @@ h1 {
   color: #fff;
   transition: transform .1s ease;
 }
+
 .icon-btn:active {
   transform: scale(.95);
 }
