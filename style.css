@@ -503,6 +503,9 @@ h1 {
   .list-row {
     grid-template-columns: 1fr;
   }
+  .list-head{
+    display: none;
+  }
   .preview-card {
     width: 100%;
     height: 180px;
