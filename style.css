@@ -44,6 +44,21 @@ body {
   margin: 0 auto;
   padding: 16px;
 }
+/* Reuse your existing modal styles */
+#guidelinesModal .modal-sheet {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+#guidelinesModal ul {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+#guidelinesModal h2 {
+  margin-bottom: 10px;
+}
 
 /* Header */
 .site-header {
