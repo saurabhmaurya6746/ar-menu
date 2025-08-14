@@ -51,7 +51,7 @@ const dishes = [
     glb: 'assets/french_fries (1).glb',
     category: 'Sides',
     rating: 4.3
-  }
+  } 
 ];
 
 /***********************
