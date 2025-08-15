@@ -58,7 +58,7 @@ const dishes = [
     title: 'Veg Chowmein',
     price: 149,
     desc: 'Stir-fried noodles with fresh vegetables and special sauce.',
-    glb: 'assets/chaumin.glb',
+    glb: 'assets/Noodles.glb',
     category: 'Noodles',
     rating: 4.2
   }
